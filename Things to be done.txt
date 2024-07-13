@@ -1,0 +1,9 @@
+Brian's Ideas:
+O Build door taht seeker controls (Play needs password
+	O Cooldown of 10 seconds
+	O Player either need password or switch
+O Setup way for players to get infected
+
+Ethan's ideas:
+O Traps: Poison gas, balls, spikes
+O Other tasks to be implemented
