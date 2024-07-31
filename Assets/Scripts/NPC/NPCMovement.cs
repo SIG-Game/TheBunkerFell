@@ -62,7 +62,7 @@ public class NPCMovement : MonoBehaviour
         {
             Vector3 direction = target.transform.position - transform.position;
             direction = new Vector3(direction.x, 0, direction.z);  // ignore y-position
-
+            
             // get distance between player and NPC
             float distance = Mathf.Pow(direction.x, 2) + Mathf.Pow(direction.z, 2);
 
@@ -74,7 +74,9 @@ public class NPCMovement : MonoBehaviour
 
             if (chasing)
             {
-                controller.Move(direction * Time.deltaTime * speed);
+                direction.Normalize();
+                Debug.Log("NPC: " + (direction * Time.deltaTime * speed));
+                controller.Move(direction * speed * Time.deltaTime);
 
                 // player's too close, stop!
                 if (distance < stopDistance)
