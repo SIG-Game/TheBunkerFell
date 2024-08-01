@@ -18,9 +18,8 @@ public class NPCMovement : MonoBehaviour
     // target chasing values
     private GameObject target;
     private bool chasing = false;
-    [SerializeField] float chaseDistance = 4;
-    [SerializeField] float stopDistance = 2;
-    //[SerializeField] float catchUpSpeedMultiplier = 2;
+    [SerializeField] float chaseDistanceSquared = 4;
+    [SerializeField] float stopDistanceSquared = 2;
     [SerializeField] NPCSensor NPCSensor;
 
     private void OnEnable()
@@ -61,25 +60,24 @@ public class NPCMovement : MonoBehaviour
         if (target != null)  // there's a target to follow
         {
             Vector3 direction = target.transform.position - transform.position;
-            direction = new Vector3(direction.x, 0, direction.z);  // ignore y-position
-            
+            direction.y = 0;  // ignore y-position
+
             // get distance between player and NPC
-            float distance = Mathf.Pow(direction.x, 2) + Mathf.Pow(direction.z, 2);
+            float distanceSquared = direction.sqrMagnitude;
 
             // player is too far, follow them!
-            if (!chasing && distance > chaseDistance)
+            if (!chasing && distanceSquared > chaseDistanceSquared)
             {
                 chasing = true;
             }
 
             if (chasing)
             {
-                direction.Normalize();
-                Debug.Log("NPC: " + (direction * Time.deltaTime * speed));
+                direction.Normalize();  // get direction only
                 controller.Move(direction * speed * Time.deltaTime);
 
                 // player's too close, stop!
-                if (distance < stopDistance)
+                if (distanceSquared < stopDistanceSquared)
                 {
                     chasing = false;
                 }

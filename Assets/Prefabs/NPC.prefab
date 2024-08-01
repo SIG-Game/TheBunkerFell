@@ -152,15 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777da3d9f4071f342835708ef5e4625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -9.81
+  gravity: -19.62
   controller: {fileID: 1586580681884099685}
   groundCheck: {fileID: 1586580680884944277}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 512
-  chaseDistance: 40
-  stopDistance: 20
+  chaseDistanceSquared: 50
+  stopDistanceSquared: 25
   NPCSensor: {fileID: 1586580680355931851}
 --- !u!1 &7442207767321229760
 GameObject:
