@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class PlayerNPCCommands : MonoBehaviour
@@ -18,10 +16,8 @@ public class PlayerNPCCommands : MonoBehaviour
         {
             for (int i = 0; i < NPCs.Count; i++)
             {
-                if (NPCs[i].GetState() < 2)  // NPC can be sent forward for an action
+                if (NPCs[i].GetState() < NPCState.Charging)  // NPC can be sent forward for an action
                 {
-                    Debug.Log("Undirected NPC found");
-
                     NPCs[i].DirectNPC();
                     break;  // Only 1 NPC directed at a time, like launching Pikmin
                 }
@@ -31,7 +27,7 @@ public class PlayerNPCCommands : MonoBehaviour
         {
             for (int i = 0; i < NPCs.Count; i++)
             {
-                if (NPCs[i].GetState() > 1)  // NPC can be called back
+                if (NPCs[i].GetState() > NPCState.Following)  // NPC can be called back
                 {
                     Debug.Log("Directed NPC found");
 
