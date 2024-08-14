@@ -19,7 +19,7 @@ public class NPCMovement : MonoBehaviour
         NPCSensor.OnPlayerExitSensor += OnTargetEscape;
     }
 
-    public void OnTargetSensed(object sender, GameObject newTarget)
+    public void OnTargetSensed(GameObject newTarget)
     {
         target = newTarget;
         state = NPCState.Following;
@@ -29,7 +29,7 @@ public class NPCMovement : MonoBehaviour
         targetNPCManager?.AddNPC(this);
     }
 
-    public void OnTargetEscape(object sender, EventArgs e)
+    public void OnTargetEscape()
     {
         var targetNPCManager = target.GetComponent<PlayerNPCCommands>();
 

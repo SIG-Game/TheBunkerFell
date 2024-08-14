@@ -14,14 +14,8 @@ public class PlayerNPCCommands : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            for (int i = 0; i < NPCs.Count; i++)
-            {
-                if (NPCs[i].GetState() < NPCState.Charging)  // NPC can be sent forward for an action
-                {
-                    NPCs[i].DirectNPC();
-                    break;  // Only 1 NPC directed at a time, like launching Pikmin
-                }
-            }
+            NPCMovement directableNPC = NPCs.Find(x => x.GetState() < NPCState.Charging);  // an NPC can be sent forward for an action
+            directableNPC?.DirectNPC();
         }
         else if (Input.GetButtonDown("Fire2"))
         {
@@ -29,8 +23,6 @@ public class PlayerNPCCommands : MonoBehaviour
             {
                 if (NPCs[i].GetState() > NPCState.Following)  // NPC can be called back
                 {
-                    Debug.Log("Directed NPC found");
-
                     NPCs[i].CallNPC();
                 }
             }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class NPCSensor : MonoBehaviour
 {
-    public event EventHandler<GameObject> OnPlayerEnterSensor;
-    public event EventHandler OnPlayerExitSensor;
+    public event Action<GameObject> OnPlayerEnterSensor = (_player) => {};
+    public event Action OnPlayerExitSensor = () => { };
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -12,7 +12,7 @@ public class NPCSensor : MonoBehaviour
 
         if (target != null)  // found a player to follow
         {
-            OnPlayerEnterSensor?.Invoke(this, collision.gameObject);
+            OnPlayerEnterSensor(collision.gameObject);
         }
     }
 
@@ -22,7 +22,7 @@ public class NPCSensor : MonoBehaviour
 
         if (target != null)  // player has left the sensor
         {
-            OnPlayerExitSensor?.Invoke(this, null);
+            OnPlayerExitSensor();
         }
     }
 }
