@@ -23,7 +23,7 @@ public class NPCMovement : MonoBehaviour
     {
         target = newTarget;
         state = NPCState.Following;
-        speed = newTarget.GetComponent<PlayerMovement>().speed;
+        speed = newTarget.GetComponent<PlayerMovement>().Speed;
         var targetNPCManager = target.GetComponent<PlayerNPCCommands>();
 
         targetNPCManager?.AddNPC(this);

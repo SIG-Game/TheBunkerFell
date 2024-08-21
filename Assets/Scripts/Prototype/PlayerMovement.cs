@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int taskDistanceLimit;
 
+    public float Speed => speed;
+
     private CharacterController characterController;
     private int currentTask = -1;
 
