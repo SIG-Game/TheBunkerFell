@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        /*if (currentTask != -1)
-        {
-            if (tasks.GetDistance(GetComponent<Transform>().position, currentTask) >= taskDistanceLimit)
-            {
-                tasks.HideTask(currentTask);
-                currentTask = -1;
-            }
-        }*/
+        //if (currentTask != -1)
+        //{
+        //    if (tasks.GetDistance(GetComponent<Transform>().position, currentTask) >= taskDistanceLimit)
+        //    {
+        //        tasks.HideTask(currentTask);
+        //        currentTask = -1;
+        //    }
+        //}
     }
 
     private void FixedUpdate()
@@ -41,14 +41,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Detects collision on Player
-    /*private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Task obj = hit.gameObject.GetComponent<Task>();
-        if (obj != null && !obj.getDone())
-        {
-            currentTask = obj.taskNumber;
-            //Show specific task for it
-            tasks.ShowTask(currentTask);
-        }
-    }*/
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    Task obj = hit.gameObject.GetComponent<Task>();
+    //    if (obj != null && !obj.getDone())
+    //    {
+    //        currentTask = obj.taskNumber;
+    //        //Show specific task for it
+    //        tasks.ShowTask(currentTask);
+    //    }
+    //}
 }

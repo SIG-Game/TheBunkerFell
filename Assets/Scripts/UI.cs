@@ -3,61 +3,36 @@ using System.Collections.Generic;
 using UnityEngine.Internal;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
+    private const int MAX_HEARTS = 5;
+    private const int MAX_HELPERS = 6;
 
-    public TMP_Text heart_text;
-    public TMP_Text helper_text;
+    [SerializeField] private List<Sprite> heartPics;
+    [SerializeField] private Image healthBar;
+    [SerializeField] private TMP_Text helperText;
 
-    private int _hearts;
-    private int _helpers;
-
-    public int Hearts
+    private void Start()
     {
-        get
-        {
-            return _hearts;
-        }
-        set
-        {
-            _hearts = value;
-            heart_text.SetText(_hearts.ToString());
-        }
+        SetHealthBar(1);
+        setHelperText(1);
     }
 
-    public int Helpers
+    public void SetHealthBar(int value)
     {
-        get
-        {
-            return _helpers;
-        }
-        set
-        {
-            _helpers = value;
-            helper_text.SetText(_helpers.ToString());
-        }
+        //Constraints for value
+        if (value < 0) { value = 0; } else if (value > MAX_HEARTS) { value = MAX_HEARTS; }
+
+        healthBar.sprite = heartPics[value];
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void setHelperText(int value)
     {
-        Hearts = 0;
-        Helpers = 0;
-    }
+        //Constraints for value
+        if (value < 0) { value = 0; } else if (value > MAX_HELPERS) { value = MAX_HELPERS; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            Hearts++;
-        }
-        
-
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            Helpers++;
-        }
+        helperText.text = value.ToString();
     }
 }
