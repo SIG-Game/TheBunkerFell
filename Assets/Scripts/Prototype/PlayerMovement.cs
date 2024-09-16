@@ -2,14 +2,14 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Tasks tasks;
+    //[SerializeField] private Tasks tasks;
     [SerializeField] private float speed;
-    [SerializeField] private int taskDistanceLimit;
+    //[SerializeField] private int taskDistanceLimit;
 
     public float Speed => speed;
 
     private CharacterController characterController;
-    private int currentTask = -1;
+    //private int currentTask = -1;
 
     private void Awake()
     {
@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (currentTask != -1)
+        /*if (currentTask != -1)
         {
             if (tasks.GetDistance(GetComponent<Transform>().position, currentTask) >= taskDistanceLimit)
             {
                 tasks.HideTask(currentTask);
                 currentTask = -1;
             }
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -37,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
             input.Normalize();
         }
 
-        characterController.Move(speed * input);
+        characterController.Move(speed * input * Time.deltaTime);
     }
 
     //Detects collision on Player
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    /*private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Task obj = hit.gameObject.GetComponent<Task>();
         if (obj != null && !obj.getDone())
@@ -50,5 +50,5 @@ public class PlayerMovement : MonoBehaviour
             //Show specific task for it
             tasks.ShowTask(currentTask);
         }
-    }
+    }*/
 }
