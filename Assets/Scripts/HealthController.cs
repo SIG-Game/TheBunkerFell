@@ -4,9 +4,8 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private UI ui;
 
-    //public event Action OnHealthSet = () => { };
+    public event Action OnHealthSet = () => { };
 
     public int Health
     {
@@ -28,9 +27,7 @@ public class HealthController : MonoBehaviour
             // TODO: Remove this when the player health UI is added
             Debug.Log($"Health: {_health}");
 
-            ui.SetHealthBar(_health);
-
-            //OnHealthSet();
+            OnHealthSet();
         }
     }
 
@@ -43,18 +40,18 @@ public class HealthController : MonoBehaviour
 
     private void Start()
     {
-        //OnHealthSet();
+        OnHealthSet();
     }
 
     private void Update()
     {
         // TODO: Remove this when health can be changed by something else in-game
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Health++;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Health--;
         }

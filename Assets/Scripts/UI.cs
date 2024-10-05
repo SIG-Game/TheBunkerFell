@@ -16,7 +16,8 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        SetHelperText(0);
+        SetHealthBar(1);
+        setHelperText(1);
     }
 
     public void SetHealthBar(int value)
@@ -27,7 +28,7 @@ public class UI : MonoBehaviour
         healthBar.sprite = heartPics[value];
     }
 
-    public void SetHelperText(int value)
+    public void setHelperText(int value)
     {
         //Constraints for value
         if (value < 0) { value = 0; } else if (value > MAX_HELPERS) { value = MAX_HELPERS; }
